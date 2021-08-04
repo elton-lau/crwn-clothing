@@ -1,6 +1,4 @@
 import React from 'react'
-import { render } from 'react-dom'
-import { withRouter } from 'react-router'
 
 import MenuItem from '../menu-item/menu-item.component'
 
