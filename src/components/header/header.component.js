@@ -12,36 +12,38 @@ import { selectCurrentUser } from '../../redux/user/user.selectors'
 
 import { ReactComponent as Logo } from '../../assets/crown.svg'
 
+import { HeaderContainer, LogoContainer, OptionsContainer, OptionLink, OptionDiv } from './header.styles'
+
 import './header.styles.scss'
 
 const Header = ({ currentUser, hidden }) => {
   return (
-    <div className='header'>
-      <Link to='/'>
+    <HeaderContainer>
+      <LogoContainer to='/'>
         <Logo className='logo' />
-      </Link>
-      <div className='options'>
-          <Link to='/shop' className='option'>
+      </LogoContainer>
+      <OptionsContainer>
+          <OptionLink to='/shop'>
             SHOP
-          </Link>
-          <Link to='/shop' className='option'>
+          </OptionLink>
+          <OptionLink to='/shop'>
             CONTACT
-          </Link>
+          </OptionLink>
           {currentUser ? (
-            <div className='option' onClick={() => auth.signOut()}>
+            <OptionDiv onClick={() => auth.signOut()}>
               SIGN OUT
-            </div>
+            </OptionDiv>
           ) : (
-            <Link className='option' to='/signin'>
+            <OptionLink to='/signin'>
               SIGN IN
-            </Link>
+            </OptionLink>
           )}
           <CartIcon />
-      </div>
+      </OptionsContainer>
       {
         hidden ? null : <CartDropdown />
       }
-    </div>
+    </HeaderContainer>
   )
 }
 
